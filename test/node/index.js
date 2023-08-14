@@ -1,7 +1,7 @@
 // Copyright (c) Chris Hafey.
 // SPDX-License-Identifier: MIT
 
-let openjphjs = require('../../dist/openjphjs.js');
+let openjphjs = require('../../orig/openjphjs.js');
 const fs = require('fs')
 
 function decode(encodedImagePath, iterations = 1) {
@@ -50,17 +50,19 @@ function encode(pathToUncompressedImageFrame, imageFrame, pathToJ2CFile, iterati
     console.log('  encoded length=', encodedBytes.length)
   
     if(pathToJ2CFile) {
-        //fs.writeFileSync(pathToJ2CFile, encodedBytes);
+        fs.writeFileSync(pathToJ2CFile, encodedBytes);
     }
     // cleanup allocated memory
     encoder.delete();
   }
 
 openjphjs.onRuntimeInitialized = async _ => {
-  decode('../fixtures/j2c/CT2.j2c');
-  decode('../../extern/OpenJPH/subprojects/js/html/test.j2c');
+  console.log('HELLO')
+  // decode('../fixtures/j2c/CT2.j2c');
+  // decode('../../extern/OpenJPH/subprojects/js/html/test.j2c');
 
-  encode('../fixtures/raw/CT1.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/CT1.j2c');
+  encode('../bad.dat', {width: 474, height: 474, bitsPerSample: 16, componentCount: 1, isSigned: false}, '../bad.j2c');
+  // encode('../fixtures/raw/CT1.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/CT1.j2c');
   //encode('../fixtures/raw/CT2.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/CT2.j2c');
   //encode('../fixtures/raw/MG1.RAW', {width: 3064, height: 4774, bitsPerSample: 16, componentCount: 1, isSigned: false}, '../fixtures/j2c/MG1.j2c');
   //encode('../fixtures/raw/MR1.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/MR1.j2c');

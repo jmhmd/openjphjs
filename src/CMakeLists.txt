@@ -12,6 +12,9 @@ set_target_properties(
       -s WASM=1 \
       --bind \
       -s DISABLE_EXCEPTION_CATCHING=1 \
+      -s MODULARIZE=1 \
+      -s ENVIRONMENT=web \
+      -s DYNAMIC_EXECUTION=0 \
       -s ASSERTIONS=0 \
       -s NO_EXIT_RUNTIME=1 \
       -s MALLOC=emmalloc \
@@ -21,3 +24,7 @@ set_target_properties(
       -s EXPORTED_FUNCTIONS=[] \
       -s EXPORTED_RUNTIME_METHODS=[ccall] \
    ")
+
+  #  -s MODULARIZE=1 \
+  # -s ENVIRONMENT=web \
+  # -s DYNAMIC_EXECUTION=0 \
