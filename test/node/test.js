@@ -115,7 +115,7 @@ console.log("HELLO");
 // decode('../../extern/OpenJPH/subprojects/js/html/test.j2c');
 
 // encode(
-//   "../bad.dat",
+//   "34.dcm",
 //   {
 //     width: 474,
 //     height: 474,
@@ -125,8 +125,9 @@ console.log("HELLO");
 //   },
 //   "../bad.j2c"
 // );
-decode("../comp.j2c");
+// decode("../comp.j2c");
 
+encode('../fixtures/raw/CT1.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/testct.j2c');
 
 // encode('../fixtures/raw/CT1.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/CT1.j2c');
 //encode('../fixtures/raw/CT2.RAW', {width: 512, height: 512, bitsPerSample: 16, componentCount: 1, isSigned: true}, '../fixtures/j2c/CT2.j2c');

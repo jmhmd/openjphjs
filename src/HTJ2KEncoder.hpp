@@ -244,6 +244,8 @@ public:
     {
       codestream.access_qcd().set_irrev_quant(quantizationStep_);
     }
+    codestream.set_tilepart_divisions(true, false);
+    codestream.request_tlm_marker(true);
     codestream.set_planar(isUsingColorTransform_ == false);
     codestream.write_headers(&encoded_);
 
